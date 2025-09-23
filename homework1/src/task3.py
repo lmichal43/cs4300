@@ -1,17 +1,14 @@
 #function to check check if a given number is positive,negative, or zero. 
 def check_num(num):
-    if (num > 0):
-        return "Positive"
-    elif (num < 0):
-        return "Negative"
-    elif (num == 0):
+    if num == 0:
         return "Zero"
+    return "Positive" if num > 0 else "Negative"
 
 #find the first 10 prime numbers
 def find_primes(num_primes):
     counter = 0
     number = 2
-    primes_list = []
+    primes = []
 
     while counter < num_primes:
 
@@ -20,10 +17,10 @@ def find_primes(num_primes):
 
             # If i reaches number then it means it is a prime number
             if number == i:
-                primes_list.append(number)
-                counter += 1
+                primes.append(number)
+                counter = counter+ 1
                 break
-            elif number % i == 0:
+            elif (number % i == False):
                 break
 
 
@@ -32,17 +29,9 @@ def find_primes(num_primes):
         number += 1
 
 #returns the list of primes
-    return primes_list
+    return primes
 
 #function to find the sum of all numbers from 1 to 100
 def sum_ints(number):
-    counter = 0
-    total = 0
-
-    while counter <= number:
-        total += counter
-        counter += 1
-
-    return total
-
+    return number * (number + 1) // 2
 
