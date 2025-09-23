@@ -7,4 +7,4 @@ def test_task6_read_me_file():
     print("Word count is:", result)
     assert result == expected_count
 
-    print(count_words_in_file("task6_read_me.txt"))
+
