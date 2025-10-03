@@ -1,0 +1,22 @@
+{% extends "bookings/base.html" %}
+
+{% block content %}
+<h2>Book Seats for {{ movie.title }}</h2>
+
+<form method="post">
+    {% csrf_token %}
+    <ul class="list-group">
+        {% for seat in seats %}
+        <li class="list-group-item">
+          <label>
+            <input type="checkbox" name="seats" value="{{ seat.id }}">
+            Seat {{ seat.seat_number }}
+        </label>
+        </li>
+        {% empty %}
+        <li class="list-group-item">No available seats.</li>
+        {% endfor %}
+    </ul>
+    <button type="submit" class="btn btn-success mt-3">Confirm Booking</button>
+</form>
+{% endblock %}
