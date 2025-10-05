@@ -39,8 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    "rest_framework",   
-    "bookings",         
+    "rest_framework",
+    "bookings",
+    "corsheaders",
 ]
 
 REST_FRAMEWORK = {
@@ -52,6 +53,7 @@ REST_FRAMEWORK = {
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'corsheaders.middleware.CorsMiddleware',  
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -59,6 +61,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
 
 ROOT_URLCONF = 'movie_theater_booking.urls'
 
@@ -139,3 +142,6 @@ CSRF_TRUSTED_ORIGINS = [
 # Tell Django to trust proxy headers
 USE_X_FORWARDED_HOST = True
 #FORCE_SCRIPT_NAME = '/proxy/3000'
+
+CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_CREDENTIALS = True

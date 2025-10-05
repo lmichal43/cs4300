@@ -1,3 +1,0 @@
-python -m pytest
-
-^ enter this in while in the homework1 directory
