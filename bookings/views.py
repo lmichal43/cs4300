@@ -7,17 +7,23 @@ from .serializers import MovieSerializer, SeatSerializer, BookingSerializer
 # DRF ViewSets (API)
 # -----------------------
 
+from rest_framework.permissions import AllowAny
+
+
 class MovieViewSet(viewsets.ModelViewSet):
     queryset = Movie.objects.all()
     serializer_class = MovieSerializer
+    permission_classes = [AllowAny]
 
 class SeatViewSet(viewsets.ModelViewSet):
     queryset = Seat.objects.all()
     serializer_class = SeatSerializer
+    permission_classes = [AllowAny]
 
 class BookingViewSet(viewsets.ModelViewSet):
     queryset = Booking.objects.all()
     serializer_class = BookingSerializer
+    permission_classes = [AllowAny]
 
 # -----------------------
 # Regular Django Views (HTML + forms)
