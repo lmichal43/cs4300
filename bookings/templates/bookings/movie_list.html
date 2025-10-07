@@ -7,7 +7,11 @@
     <li class="list-group-item">
         <strong>{{ movie.title }}</strong> ({{ movie.release_date }})<br>
         <p>{{ movie.description }}</p>
-        <a href="{% url 'seat_booking' movie.id %}" class="btn btn-primary btn-sm">Book Seats</a>
+        {% if "devedu.io" in request.get_host %}
+            <a href="/proxy/3000/{% url 'seat_booking' movie.id %}" class="btn btn-primary btn-sm">Book Seats</a>
+        {% else %}
+            <a href="{% url 'seat_booking' movie.id %}" class="btn btn-primary btn-sm">Book Seats</a>
+{% endif %}
     </li>
     {% empty %}
     <li class="list-group-item">No movies available.</li>

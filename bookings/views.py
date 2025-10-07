@@ -2,11 +2,6 @@ from django.shortcuts import render, get_object_or_404, redirect
 from rest_framework import viewsets
 from .models import Movie, Seat, Booking
 from .serializers import MovieSerializer, SeatSerializer, BookingSerializer
-
-# -----------------------
-# DRF ViewSets (API)
-# -----------------------
-
 from rest_framework.permissions import AllowAny
 
 
