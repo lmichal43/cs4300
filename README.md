@@ -1,8 +1,6 @@
-
-
 This project has been deployed on Render. This is the link!
 
-
+https://cs4300-wj68.onrender.com 
 
 To run this project on DevEdu, 
 
@@ -21,7 +19,7 @@ ChatGPT explained that:
     views.py handles what gets displayed or sent back to the user.
     urls.py connects everything by linking URLs to views.
 
-From there, I learned how to use path() and include() correctly and how to make sure the app was registered in settings.py.
+From there, I learned how to use path() and include() correctly and how to make sure the app was registered in settings.py
 There were a lot of moments where I had to keep going back and forth fixing small issues, but that helped me actually understand how Django links everything.
 
 Fixing my models, serializers, and API endpoints
@@ -53,10 +51,9 @@ ChatGPT helped me style everything using Bootstrap like buttons and such
 
 We also fixed an issue with the “Book Seats” button.
 At first, it broke when I moved the project to Render because it still used /proxy/3000/, which only works in DevEdu.
-After changing it to a dynamic {% url 'seat_booking' movie.id %}, it worked well
+After changing it to a dynamic {% url 'seat_booking' movie.id %}, it worked well. Then, I realized I need to basically have both because I wanted it to work both on DevEdu and Render so I included both of them in there.
 
 Deploying to Render
-
 This part took a lot of trial and error, and ChatGPT helped me fix it
 Here’s what I learned during deployment:
 What a Procfile is and how to use Gunicorn to run the Django app

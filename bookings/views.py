@@ -4,37 +4,35 @@ from .models import Movie, Seat, Booking
 from .serializers import MovieSerializer, SeatSerializer, BookingSerializer
 from rest_framework.permissions import AllowAny
 
-
+#handle operations for movie using rest
 class MovieViewSet(viewsets.ModelViewSet):
     queryset = Movie.objects.all()
     serializer_class = MovieSerializer
     permission_classes = [AllowAny]
 
+#handles operations for seating using rest frame
 class SeatViewSet(viewsets.ModelViewSet):
     queryset = Seat.objects.all()
     serializer_class = SeatSerializer
     permission_classes = [AllowAny]
 
+#handles api operations for booking using rest
 class BookingViewSet(viewsets.ModelViewSet):
     queryset = Booking.objects.all()
     serializer_class = BookingSerializer
     permission_classes = [AllowAny]
 
-# -----------------------
-# Regular Django Views (HTML + forms)
-# -----------------------
-
+#display movies on main page
 def movie_list(request):
-    """Show all movies in an HTML template."""
     movies = Movie.objects.all()
     return render(request, 'bookings/movie_list.html', {'movies': movies})
 
-
+#shows available seats and saves the selection after
 def seat_booking(request, movie_id):
-    """Handle seat selection & booking for a specific movie."""
     movie = get_object_or_404(Movie, id=movie_id)
     available_seats = Seat.objects.filter(movie=movie, is_booked=False)
 
+#post -  saves chosen seats as booked 
     if request.method == 'POST':
         selected_seats = request.POST.getlist('seats')
         for seat_id in selected_seats:
@@ -46,12 +44,13 @@ def seat_booking(request, movie_id):
 
         return redirect('/booking-history/')
 
+#if no post, display seat booking pg
     return render(request, 'bookings/seat_booking.html', {
         'movie': movie,
         'seats': available_seats,
     })
 
-
+#all bookings made
 def booking_history(request):
     """Show a list of all bookings."""
     bookings = Booking.objects.all()
